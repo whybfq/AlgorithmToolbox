@@ -37,7 +37,7 @@ def max_pairwise_product(numbers):
     return max_product
 
 
-def StreeTest(N, M):
+def StressTest(N, M):
     while True:  # 2. INFINITE LOOP
         n = random.randint(1, N)  # 3. RANDOM TEST GENERATOR
         print(f'n is {n}')
@@ -54,7 +54,7 @@ def StreeTest(N, M):
 
 
 if __name__ == '__main__':
-    StreeTest(10, 1000)
+    StressTest(10, 1000)
     # input_n = int(input())
     # input_numbers = [int(x) for x in input().split()]
     # print(max_pairwise_product(input_numbers))

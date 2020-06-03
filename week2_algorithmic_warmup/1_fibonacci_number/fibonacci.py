@@ -27,7 +27,7 @@ def fibonacci_(n):  # according to the formula
     return int(b * ((0.5 + a/2) ** n - (0.5 - a/2) ** n))
 
 
-def StreeTest(M):
+def StressTest(M):
     while True:  # 2. INFINITE LOOP
         number = random.randint(1, M)  # 3. RANDOM TEST GENERATOR
         print(f'numbers is {number}')
@@ -47,4 +47,4 @@ if __name__ == '__main__':
     # print(calc_fib_fast(n))
     # print(fibonacci_(n))
     # print(calc_fib(n))
-    StreeTest(10)  # if number very large, it will be very slow
+    StressTest(10)  # if number very large, it will be very slow
