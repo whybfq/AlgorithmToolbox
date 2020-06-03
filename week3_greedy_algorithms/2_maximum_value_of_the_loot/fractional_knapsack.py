@@ -1,7 +1,7 @@
 '''
 Code problem: fractional knapsack
 
-The first line of the input contains the number 1≤n≤103 of items and
+The first line. of the input contains the number 1≤n≤103 of items and
 the weight 0≤W≤2⋅106 of a knapsack. The next n lines define
 the cost 0≤ci≤2⋅106 and the weight 0≤ wi ≤2⋅106 of i-th item
 (n, W, ci's, wi's are integers).
@@ -17,6 +17,9 @@ Sample Input:
 Sample Output:
 180.0000
 
+Description:
+intput 3 items, capacity=50
+and then 3 things, each value and each weight
 Memory Limit: 256 MB
 Time Limit: 5 seconds
 '''
