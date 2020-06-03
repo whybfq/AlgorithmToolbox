@@ -23,7 +23,7 @@ Time Limit: 5 seconds
 import sys
 
 
-def get_optimal_value(capacity, weights, values):
+def get_optimal_value(capacity, weights, values):  # len(weights) = len(values)
     # n = len(values)
     #
     # K = [[0 for x in range(capacity+1)] for x in range(n+1)]
@@ -41,9 +41,9 @@ def get_optimal_value(capacity, weights, values):
     totalCost, costWeight, n = 0.0, [], len(weights)
 
     for i in range(n):
-        costWeight.append((values[i], weights[i],values[i] * 1.0/weights[i]))
+        costWeight.append((values[i], weights[i], values[i] * 1.0/weights[i]))
 
-    sortedWeight = sorted(costWeight, key=lambda x: x[2], reverse=True)
+    sortedWeight = sorted(costWeight, key=lambda x: x[2], reverse=True)   # descend according to the unit cost
 
     for i in sortedWeight:
         if capacity >= i[1]:
