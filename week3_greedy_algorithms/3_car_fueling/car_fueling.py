@@ -1,4 +1,6 @@
 '''
+https://www.coursera.org/lecture/algorithmic-toolbox/car-fueling-implementation-and-analysis-shwg1
+
 Input Format. The first line contains an integer 𝑑. The second line contains an integer 𝑚. The third line
 specifies an integer 𝑛. Finally, the last line contains integers stop1, stop2, . . . , stop𝑛.
 Output Format. Assuming that the distance between the cities is 𝑑 miles, a car can travel at most 𝑚 miles
@@ -45,7 +47,31 @@ import numpy as np
 no_stops = 0  # number of stops
 
 
+def min_refills(distance, tank, stops):
+    """
+        :type distance: the distance from A to B
+        :type tank: int  a car can travel at most tank (L) with full tank
+        :type stops: int a series stop refill stations
+    """
+    n = len(stops)  # n gas stations at distances stops[0] <= stops[1] <=... stops[n]
+    numRefills, currentRefill = 0, 0
+    while currentRefill <= n:
+        lastRefill = currentRefill
+        while currentRefill <= n and stops[currentRefill+1]-stops[lastRefill] <= tank:
+            currentRefill += 1
+        if currentRefill == lastRefill:
+            return -1  # impossible
+        if currentRefill <= n:
+            numRefills += 1
+        return numRefills
+
+
 def compute_min_refills(distance, tank, stops):
+    """
+    :type distance: the distance from A to B
+    :type tank: int  the farthest distance car can arrive
+    :type stops: int a series stop refill stations
+    """
     global no_stops
     stops.append(distance)
     stops = np.sort(stops)
@@ -98,4 +124,5 @@ def compute_min_refills(distance, tank, stops):
 
 if __name__ == '__main__':
     d, m, _, *stops = map(int, sys.stdin.read().split())  # stops is a list
-    print(compute_min_refills(d, m, stops))
+    print(compute_min_refills(d, m, stops))  # correct way1
+    print(min_refills(d, m, stops))
