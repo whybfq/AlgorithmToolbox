@@ -47,17 +47,21 @@ import numpy as np
 no_stops = 0  # number of stops
 
 
-def min_refills(distance, tank, stops):
+# have some problems   #  incorrect
+def min_refills(distance, tank, stops):  # O(n) only change currentRefill changes at most linear time
     """
         :type distance: the distance from A to B
         :type tank: int  a car can travel at most tank (L) with full tank
         :type stops: int a series stop refill stations
     """
-    n = len(stops)  # n gas stations at distances stops[0] <= stops[1] <=... stops[n]
+    stops.append(distance)
+    n = len(stops)   # n gas stations at distances stops[0] <= stops[1] <=... stops[n]
     numRefills, currentRefill = 0, 0
     while currentRefill <= n:
         lastRefill = currentRefill
-        while currentRefill <= n and stops[currentRefill+1]-stops[lastRefill] <= tank:
+        # if stops[ currentRefill + 1 ] - stops[ lastRefill ] > tank:
+        #     return -1  # impossible
+        while currentRefill <= n and stops[currentRefill + 1] - stops[lastRefill] <= tank:  # and stops[currentRefill] <= distance
             currentRefill += 1
         if currentRefill == lastRefill:
             return -1  # impossible
@@ -73,8 +77,8 @@ def compute_min_refills(distance, tank, stops):
     :type stops: int a series stop refill stations
     """
     global no_stops
-    stops.append(distance)
-    stops = np.sort(stops)
+    stops.append(distance)  # should already sorted
+    # stops = np.sort(stops)
     current_stop, i = 0, 0
 
     while current_stop < distance:
@@ -89,11 +93,12 @@ def compute_min_refills(distance, tank, stops):
                 # print(current_stop)
         if i == len(stops) - 1 and tank >= (stops[i] - current_stop):
             current_stop = stops[i]
-            # print('im here')
+            # print('stop here')
             break
         if i == len(stops) - 1 and tank < (stops[ i ] - current_stop):
             no_stops = -1
             break
+
         if i == len(stops) - 1 and tank < (stops[ i ] - current_stop):
             no_stops = -1
             break
@@ -125,4 +130,4 @@ def compute_min_refills(distance, tank, stops):
 if __name__ == '__main__':
     d, m, _, *stops = map(int, sys.stdin.read().split())  # stops is a list
     print(compute_min_refills(d, m, stops))  # correct way1
-    print(min_refills(d, m, stops))
+    print(min_refills(d, m, stops))  # have some problems
