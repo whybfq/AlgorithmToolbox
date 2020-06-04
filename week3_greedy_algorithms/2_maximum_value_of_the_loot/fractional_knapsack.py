@@ -20,6 +20,15 @@ Sample Output:
 Description:
 intput 3 items, capacity=50
 and then 3 things, each value and each weight
+To achieve the value 180, we take the first item and the third item into the bag.
+Sample 2.
+Input:
+1 10
+500 30
+Output:
+166.6667
+Here, we just take one third of the only available item.
+
 Memory Limit: 256 MB
 Time Limit: 5 seconds
 '''
