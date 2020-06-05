@@ -38,12 +38,13 @@ import sys
 from collections import namedtuple
 
 Segment = namedtuple('Segment', 'start end')
+# print(f'Segment: {Segment}')
 
 
 def optimal_points(segments):
     points = []
-    # write your code here
-    segments = sorted(segments, key= lambda segment: segment.end)
+    segments = sorted(segments, key=lambda segment: segment.end)
+    # print(f'segments is: {segments}')
     current = segments[0].end
     points.append(current)
     for s in segments:
