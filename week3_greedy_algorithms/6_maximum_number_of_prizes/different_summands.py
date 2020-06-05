@@ -73,8 +73,7 @@ import sys
 
 
 def optimal_summands(n):
-    total, increment, count = 0, 1, 0
-    listOfNum = []
+    total, increment, count, listOfNum = 0, 1, 0, []
 
     while total + increment <= n:
         total += increment
@@ -87,6 +86,6 @@ def optimal_summands(n):
 
 if __name__ == '__main__':
     summands = optimal_summands(int(sys.stdin.read()))
-    print(len(summands))
+    print(len(summands))  # count = len(summands)
     for x in summands:
         print(x, end=' ')
