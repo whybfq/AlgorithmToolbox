@@ -53,22 +53,33 @@ def IsBetter(digit, max_digit):
     return int(str(digit) + str(max_digit)) >= int(str(max_digit) + str(digit))
 
 
+def find_safe_max_number(a: list):
+    max_ = a[0]
+    for x in a:
+        max_ = safe_max(max_, x)
+    return max_
+
+
+def safe_max(max_, x):
+    A = str(max_) + str(x)
+    B = str(x) + str(max_)
+    # check A > B ? max_ : x
+    return max_ if A >= B else x
+
+
 def largest_number(a: list):  # a is the numbers
-    yourSalary = []
-    while a:  # a != []
-        maxNumber = -1
-        for x in a:
-            # if int(x) >= maxNumber:
-            if IsBetter(x, maxNumber):
-                maxNumber = x
-        yourSalary.append(maxNumber)
+    yourSalary, i = "", 0
+    while a:  # a != []  # len(a) > 0
+        i += 1
+        maxNumber = find_safe_max_number(a)
+        yourSalary += maxNumber
         a.remove(maxNumber)
     return yourSalary
 
 
 if __name__ == '__main__':
-    # data = sys.stdin.read().split()
-    # a = data[ 1: ]
-    n = int(input())
-    lst = [int(i) for i in input().split()]
+    data = sys.stdin.read().split()
+    lst = data[ 1: ]
+    # n = int(input())
+    # lst = [int(i) for i in input().split()]
     print(largest_number(lst))
