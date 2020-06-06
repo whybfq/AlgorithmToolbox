@@ -1,4 +1,30 @@
 
+""" Page 85
+Prove that this idea leads to an algorithm with running
+time O(n log n).
+Input format. The first line contains an integer n, the next one contains
+Chapter 6. Divide-and-Conquer
+a sequence of n non-negative integers a1, . . . , an.
+Output format. Output 1 if the sequence contains an element that ap-
+pears more than n/ 2 times, and 0 otherwise.
+Constraints. 1 ≤ n ≤ 105; 0 ≤ ai ≤ 109 for all 1 ≤ i ≤ n. Sample 1.
+Input:
+5
+2 3 9 2 2
+Output:
+1
+
+2 is the majority element.
+
+Sample 2.
+Input:
+4
+1 2 3 1
+Output:
+0
+This sequence does not have a majority element (note that the element 1 is not a majority element).
+
+"""
 import sys
 
 
