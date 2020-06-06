@@ -1,19 +1,17 @@
-# Uses python3
+# Page 84
 import sys
 
 
 def binary_search(a, x):
     left, right = 0, len(a) - 1
-    mid = left + (right - left) // 2
     while left <= right:
-        if a[mid] == x:
-            return mid
-        elif x > a[mid]:
-            mid = left + 1
-            # binary_search(a[left+1: right], x)
+        mid = left + (right - left) // 2
+        if x > a[mid]:
+            left = mid + 1  # binary_search(a[left+1: right], x)
+        elif x < a[mid]:
+            right = mid - 1  # binary_search(a[left, mid-1], x)
         else:
-            right = mid - 1
-            # binary_search(a[left, mid-1], x)
+            return mid    
     return -1
 
 
@@ -25,12 +23,13 @@ def linear_search(a, x):
 
 
 if __name__ == '__main__':
-    input = sys.stdin.read()
-    data = list(map(int, input.split()))
-    n = data[ 0 ]
-    m = data[ n + 1 ]
-    a = data[ 1: n + 1 ]
-    for x in data[ n + 2: ]:
-        # replace with the call to binary_search when implemented
-        print(linear_search(a, x), end=' ')
-        print(binary_search(a, x), end=' ')
+    seq = [int(i) for i in input().split()]
+    search_seq = [int(i) for i in input().split()]
+    n = seq[0]
+    seq = seq[1:]
+    
+    soln = list()
+    for i in search_seq[1:]:
+        ans = binary_search(seq, i)
+        soln.append(ans)
+    print(' '.join([str(i) for i in soln]))
