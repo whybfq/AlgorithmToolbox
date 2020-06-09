@@ -35,6 +35,7 @@ def partition3(a, l, r):
         else:
             a[i], a[p_e] = a[p_e], a[i]
             p_e -= 1
+
     return [p_l, p_e]
 
 
@@ -68,7 +69,7 @@ def randomized_quick_sort(a, l, r):
 if __name__ == '__main__':
     # t1 = time.time()
     n, *a = list(map(int, sys.stdin.read().split()))
-    print(f'n is {n}, array: {a}')
+    # print(f'n is {n}, array: {a}')
     randomized_quick_sort(a, 0, n - 1)
     # quicksort(a, 0, n-1)
     # t2 = time.time()
