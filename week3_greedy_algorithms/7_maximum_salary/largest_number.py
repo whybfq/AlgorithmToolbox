@@ -1,4 +1,6 @@
 # Page 77
+# reference min number in leetcode
+# https://leetcode-cn.com/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/solution/mian-shi-ti-45-ba-shu-zu-pai-cheng-zui-xiao-de-s-4/
 
 """
 A sample greedy algorithm
